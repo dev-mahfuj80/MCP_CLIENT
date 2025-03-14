@@ -1,4 +1,4 @@
-## mcp-client
+# mcp-client
 
 A client for the MCP (Model Chat Platform) API.
 
