@@ -1,6 +1,7 @@
 from mcp.server.fastmcp import FastMCP
 import httpx
 import asyncio
+import random
 
 mcp = FastMCP("Python360")
 
@@ -20,6 +21,21 @@ async def fetch_weather(latitude: float, longitude: float) -> str:
     async with httpx.AsyncClient() as client:
         response = await client.get(url)
         return response.text
+
+@mcp.tool()
+def calculate_subtract(a: float, b: float) -> float:
+    """Subtract b from a"""
+    return a - b
+
+@mcp.tool()
+def calculate_sum(a: float, b: float) -> float:
+    """Add two numbers together"""
+    return a + b
+
+@mcp.tool()
+def generate_random_number(min_value: int = 1, max_value: int = 100) -> int:
+    """Generate a random number between min_value and max_value"""
+    return random.randint(min_value, max_value)
 
 if __name__ == "__main__":
     loop = asyncio.new_event_loop()
